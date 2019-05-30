@@ -19,9 +19,12 @@ def retrieve_data(inf):
     if 'chr' in inf.keys() and 'pos' in inf.keys() and 'alt' in inf.keys():
         query = 'SELECT TOP 1 * FROM malignant_data WHERE chrom=' + str(inf.get('chr') + ' AND pos=' + str(inf.get('pos')) + ' AND alt=' + str(inf.get('alt')))
         cursor.execute(query)
+        print("1 BOEJAAA")
     else:
         cursor.execute('SELECT * FROM malignant_data')
+        print("2 BAMMMMM")
     results = cursor.fetchone()
+    print(results)
     cursor.close()
     connection.close()
 
