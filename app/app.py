@@ -17,11 +17,11 @@ def retrieve_data(chr, pos, alt):
     connection = mysql.connector.connect(**config)
     cursor = connection.cursor()
 
-    query = 'SELECT * FROM malignant_data WHERE chrom=' + str(chr) + ' AND pos=' + str(pos)
-    cursor.execute(query)
-    results = "1 BOEJAAA"
+    query = 'SELECT * FROM malignant_data WHERE chrom=%s AND pos=%s AND alt=%s;'
+    cursor.execute(query, (chr, pos, alt))
 
-    result = str(cursor.fetchone()[0])
+
+    results = cursor.fetchone()
     cursor.close()
     connection.close()
 
