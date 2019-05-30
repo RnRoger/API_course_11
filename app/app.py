@@ -6,7 +6,7 @@ import json
 app = Flask(__name__)
 
 
-def retrieve_data() -> List[Dict]:
+def retrieve_data(inf) -> List[Dict]:
     config = {
         'user': 'root',
         'password': 'root',
@@ -16,17 +16,20 @@ def retrieve_data() -> List[Dict]:
     }
     connection = mysql.connector.connect(**config)
     cursor = connection.cursor()
-    cursor.execute('SELECT * FROM malignant_data')
-    results = cursor.fetchall()
+    if 'chr' in inf.keys() and 'pos' in inf.keys() and 'alt' in inf.keys():
+        query = 'SELECT TOP 1 * FROM malignant_data WHERE chrom=' + str(inf.get('chr') + ' AND pos=' + str(inf.get('pos')) + ' AND alt=' + str(inf.get('alt')))
+        cursor.execute(query)
+    results = cursor.fetchone()
     cursor.close()
     connection.close()
 
     return results
 
 
-@app.route('/')
+@app.route('/api/', methods=['GET'])
 def index() -> str:
-    return json.dumps({'data': retrieve_data()})
+    inf = request.args.to_dict()
+    return json.dumps({'data': retrieve_data(inf)})
 
 
 if __name__ == '__main__':
