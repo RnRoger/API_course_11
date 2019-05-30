@@ -1,23 +1,33 @@
+from typing import List, Dict
 from flask import Flask
-import mysql
+import mysql.connector
+import json
 
 app = Flask(__name__)
 
 
-config = {
+def retrieve_data() -> List[Dict]:
+    config = {
         'user': 'root',
         'password': 'root',
         'host': 'db',
         'port': '3306',
-        'database': 'knights'
+        'database': 'vcfData'
     }
-connection = mysql.connector.connect(**config)
+    connection = mysql.connector.connect(**config)
+    cursor = connection.cursor()
+    cursor.execute('SELECT * FROM malignant_data')
+    results = cursor.fetchall()
+    cursor.close()
+    connection.close()
+
+    return results
 
 
 @app.route('/')
-def hello_world():
-    return 'Hello World!'
+def index() -> str:
+    return json.dumps({'data': retrieve_data()})
 
 
 if __name__ == '__main__':
-    app.run()
+    app.run(host='0.0.0.0')
