@@ -6,7 +6,7 @@ import json
 app = Flask(__name__)
 
 
-def retrieve_data(inf) -> List[Dict]:
+def retrieve_data(inf):
     config = {
         'user': 'root',
         'password': 'root',
@@ -26,8 +26,8 @@ def retrieve_data(inf) -> List[Dict]:
     return results
 
 
-@app.route('/api/', methods=['GET'])
-def index() -> str:
+@app.route('/api', methods=['GET'])
+def api() -> str:
     inf = request.args.to_dict()
     return json.dumps({'data': retrieve_data(inf)})
 
