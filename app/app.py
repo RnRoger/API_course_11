@@ -17,7 +17,7 @@ def retrieve_data(chr, pos, alt):
     connection = mysql.connector.connect(**config)
     cursor = connection.cursor()
 
-    query = 'SELECT TOP 1 * FROM malignant_data WHERE chrom=' + str(inf.get(chr) + ' AND pos=' + str(inf.get(pos)) + ' AND alt=' + str(inf.get(alt)))
+    query = 'SELECT * FROM malignant_data WHERE chrom=' + str(chr) + ' AND pos=' + str(pos)
     cursor.execute(query)
     results = "1 BOEJAAA"
 
