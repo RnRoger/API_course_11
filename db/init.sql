@@ -23,4 +23,3 @@ VALUES
   ('20',68319, 'rs200068921', 'C', 'A', 1185.36,  'PASS', 0.1);
 
 
-db.autocommit(True)
