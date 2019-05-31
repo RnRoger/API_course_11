@@ -32,8 +32,6 @@ def api(results):
     pos = request.args.get('pos')
     alt = request.args.get('alt')
     results = retrieve_data(chr, pos, alt)
-    with open("data.txt","wb") as fo:
-        fo.write(results)
     return str(results)
 
 
