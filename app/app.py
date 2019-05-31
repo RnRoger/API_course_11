@@ -5,8 +5,6 @@ import json
 
 app = Flask(__name__)
 
-print("hello world")
-
 def retrieve_data(chr, pos, alt):
     config = {
         'user': 'root',
@@ -21,7 +19,6 @@ def retrieve_data(chr, pos, alt):
     query = 'SELECT * FROM malignant_data WHERE chrom=%s AND pos=%s AND alt=%s;'
     cursor.execute(query, (chr, pos, alt))
 
-
     results = cursor.fetchone()
     cursor.close()
     connection.close()
@@ -30,13 +27,14 @@ def retrieve_data(chr, pos, alt):
 
 
 @app.route('/api', methods=['GET'])
-def api():
+def api(results):
     chr = request.args.get('chr')
     pos = request.args.get('pos')
     alt = request.args.get('alt')
     results = retrieve_data(chr, pos, alt)
+    with open("data.txt","wb") as fo:
+        fo.write(results)
     return str(results)
-
 
 
 if __name__ == '__main__':
