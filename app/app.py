@@ -5,6 +5,7 @@ import json
 
 app = Flask(__name__)
 
+print("hello world")
 
 def retrieve_data(chr, pos, alt):
     config = {
@@ -35,6 +36,7 @@ def api():
     alt = request.args.get('alt')
     results = retrieve_data(chr, pos, alt)
     return str(results)
+
 
 
 if __name__ == '__main__':
