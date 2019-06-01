@@ -5,10 +5,10 @@ CREATE TABLE malignant_data(
 	chrom	VARCHAR(5),
 	pos	INTEGER,
 	id	VARCHAR(25),
-	REF	VARCHAR(5),
-	alt	VARCHAR(5),
+	REF	VARCHAR(100),
+	alt	VARCHAR(100),
 	qual	FLOAT(50),
-	filter	VARCHAR(20),
+	filter	VARCHAR(25),
 	freq	FLOAT(50)
 	);
 
