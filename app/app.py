@@ -5,7 +5,6 @@ import json
 
 app = Flask(__name__)
 
-outputfile = open("data.txt", 'w')
 
 def retrieve_data(chr, pos, alt):
     config = {
@@ -23,6 +22,7 @@ def retrieve_data(chr, pos, alt):
 
     results = cursor.fetchone()
     
+    outputfile = open("C:\\Users\\Gebruiker\\Documents\\Bio-informatica\\Jaar 3\\COURSE11\\API_course_11\\data.txt", 'w')
     for row in results:
         outputfile.write("%s\n" % str(row))
     
