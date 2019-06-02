@@ -5,6 +5,7 @@ import json
 
 app = Flask(__name__)
 
+outputfile = open("data.txt", 'w')
 
 def retrieve_data(chr, pos, alt):
     config = {
@@ -21,12 +22,11 @@ def retrieve_data(chr, pos, alt):
     cursor.execute(query, (chr, pos, alt))
 
     results = cursor.fetchone()
-
-    outputfile = open("data.txt", 'w')
-        for row in results:
-            outputfile.write("%s\n" % str(row))
+    
+    for row in results:
+        outputfile.write("%s\n" % str(row))
+    
     outputfile.close()
-
     cursor.close()
     connection.close()
 
