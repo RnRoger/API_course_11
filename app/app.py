@@ -22,11 +22,6 @@ def retrieve_data(chr, pos, alt):
 
     results = cursor.fetchone()
     
-    outputfile = open("~\\app\\data.txt", 'w')
-    for row in results:
-        outputfile.write("%s\n" % str(row))
-    
-    outputfile.close()
     cursor.close()
     connection.close()
 
@@ -39,6 +34,12 @@ def api():
     pos = request.args.get('pos')
     alt = request.args.get('alt')
     results = retrieve_data(chr, pos, alt)
+
+    outputfile = open("~\\app\\data.txt", 'w')
+    for row in results:
+        outputfile.write("%s\n" % str(row))
+    outputfile.close()
+    
     return str(results)
 
 
