@@ -22,10 +22,10 @@ def retrieve_data(chr, pos, alt):
 
     results = cursor.fetchone()
 
-    with open("data.txt", 'w') as f:
+    outputfile = open("data.txt", 'w')
         for row in results:
-            f.write("%s\n" % str(row))
-    f.close()
+            outputfile.write("%s\n" % str(row))
+    outputfile.close()
 
     cursor.close()
     connection.close()
