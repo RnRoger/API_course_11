@@ -26,14 +26,9 @@ def retrieve_data(chr, pos, alt):
     for row in results:
         outputfile.write("%s\n" % str(row))
     outputfile.close()
-    
+
     cursor.close()
     connection.close()
-
-    outputfile = open("data.txt", 'w')
-    for row in results:
-        outputfile.write("%s\n" % str(row))
-    outputfile.close()
 
     return results
 
