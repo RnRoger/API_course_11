@@ -20,13 +20,12 @@ def retrieve_data(chr, pos, alt):
     query = 'SELECT * FROM malignant_data WHERE chrom=%s AND pos=%s AND alt=%s;'
     cursor.execute(query, (chr, pos, alt))
 
-
     results = cursor.fetchone()
 
-    with open('data.txt', 'w') as f:
+    with open("data.txt", 'w') as f:
         for row in results:
-            f.write(row)
-            f.close()
+            f.write("%s\n" % str(row))
+    f.close()
 
     cursor.close()
     connection.close()
