@@ -22,6 +22,11 @@ def retrieve_data(chr, pos, alt):
 
 
     results = cursor.fetchone()
+
+    with open('data.txt', 'w') as f:
+        for row in results:
+            f.write("%s\n" % str(row))
+                
     cursor.close()
     connection.close()
 
