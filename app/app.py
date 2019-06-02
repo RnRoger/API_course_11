@@ -22,7 +22,7 @@ def retrieve_data(chr, pos, alt):
 
     results = cursor.fetchone()
     
-    outputfile = open("C:\\Users\\Gebruiker\\Documents\\Bio-informatica\\Jaar 3\\COURSE11\\API_course_11\\data.txt", 'w')
+    outputfile = open("~\\app\\data.txt", 'w')
     for row in results:
         outputfile.write("%s\n" % str(row))
     
