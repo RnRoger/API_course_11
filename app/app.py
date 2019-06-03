@@ -19,7 +19,6 @@ def retrieve_data(chr, pos, alt):
 
     query = 'SELECT * FROM malignant_data WHERE chrom=%s AND pos=%s AND alt=%s;'
     cursor.execute(query, (chr, pos, alt))
-
     results = cursor.fetchone()
 
     outputfile = open("data.txt", 'w')
