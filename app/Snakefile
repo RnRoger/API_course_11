@@ -1,9 +1,0 @@
-rule NAME:
-    input:
-        "data.txt"
-    output:
-        "plots/myplot.pdf"
-    singularity:
-        "docker://joseespinosa/docker-r-ggplot2"
-    script:
-        "scripts/plot-stuff.R"
