@@ -1,0 +1,6 @@
+Building DAG of jobs...
+MissingInputException in line 1 of /home/minor-g2/Documents/Awan_Mel/API_course_11/Snakefile:
+Missing input files for rule api:
+G
+68303
+20

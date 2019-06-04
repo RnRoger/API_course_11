@@ -1,9 +1,9 @@
 rule api:
-    input:
-        chr = os.environ.get("chr")
-        pos = os.environ.get("pos")
+    params:
+        chr = os.environ.get("chr"),
+        pos = os.environ.get("pos"),
         alt = os.environ.get("alt")
     output:
         "variant.txt"
     run:
-        shell("curl 'http://0.0.0.0:5000/api?chr={chr}&pos={pos}&alt={alt}'")
+        shell("wget 'http://0.0.0.0:5000/api?chr={params.chr}&pos={params.pos}&alt={params.alt}' --output-document {output}")
