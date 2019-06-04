@@ -1,7 +1,6 @@
-rule all:
-    input:
-        "app/data.txt"
-    output:
-        ""
-    shell:
-        "
+rule sequentie:
+	input:
+		"data.txt"
+	output:
+		"sequences.txt"
+	
