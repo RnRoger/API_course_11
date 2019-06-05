@@ -21,12 +21,12 @@ CREATE TABLE benign_data(
 	);
 
 
-INSERT INTO benign_data(
+INSERT INTO benign_data
 	(chrom, pos, id, alt, ref)
 VALUES
 	('20',68396, 'rs138777928','C','T'),
 	('20',68397, 'rs748102612','G','A'),
-	('20',68402, 'rs1157968089','A','G),
+	('20',68402, 'rs1157968089','A','G'),
 	('20',68410, 'rs1405966886','T','C'),
 	('20',68413, 'rs376030532','T','C'),
 	('20',68415, 'rs746683636','G','A'),
