@@ -57,7 +57,7 @@ def retrieve_benign_data(chr, pos, alt):
     results = cursor.fetchone()
 
     cursor.close()
-    connection.close()
+    #connection.close()
 
     return results
 
