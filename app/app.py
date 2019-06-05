@@ -49,9 +49,11 @@ def api():
     results = retrieve_data(chr, pos, alt)
     if results != None and results[7] < 0.01:
         return(str(results).strip("()"))
-    else:
+    elif results != None and results[7] > 0.01:
         return("Not Malignant")
-    return("Unknown")
+    else:
+        return("Unknown")
+    
 
 
     
