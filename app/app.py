@@ -33,11 +33,6 @@ def retrieve_malignant_data(chr, pos, alt):
     cursor.execute(query, (chr, pos, alt))
     results = cursor.fetchone()
 
-#    outputfile = open("data.txt", 'w')
-#    for row in results:
-#        outputfile.write("%s\n" % str(row))
-#    outputfile.close()
-
     cursor.close()
     connection.close()
 
