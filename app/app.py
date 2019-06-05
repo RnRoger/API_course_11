@@ -74,8 +74,8 @@ def api():
         results = retrieve_benign_data(chr, pos, alt)
         if results != None:
             return("Benign")
-    else:
-        return("Unknown")
+        else:
+            return("Unknown")
 
     
     #return str(results)
