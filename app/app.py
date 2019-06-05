@@ -1,3 +1,14 @@
+#########################################################################################################################
+# Authors:  Awan Al Koerdi & Melanie Opperman                                                                           #
+# Version:  1.0                                                                                                         #
+# Date:     20-05-2019                                                                                                  #
+# Finished: 06-06-2019                                                                                                  #
+#                                                                                                                       #
+# Function: Parameters chr, pos and alt can be passed through a URL. When variant is present in database, additional    #
+#           information is retrieved.                                                                                   #
+##########################################################################################################################
+
+# required imports
 from typing import List, Dict
 from flask import Flask, request
 import mysql.connector
@@ -5,8 +16,9 @@ import json
 
 app = Flask(__name__)
 
-
-def retrieve_data(chr, pos, alt):
+# Retrieves data from local database based on given parameters chr, pos and alt. Which represents chromosome, position and 
+# alternative allele
+def retrieve_malignant_data(chr, pos, alt):
     config = {
         'user': 'root',
         'password': 'root',
@@ -21,10 +33,10 @@ def retrieve_data(chr, pos, alt):
     cursor.execute(query, (chr, pos, alt))
     results = cursor.fetchone()
 
-    outputfile = open("data.txt", 'w')
-    for row in results:
-        outputfile.write("%s\n" % str(row))
-    outputfile.close()
+#    outputfile = open("data.txt", 'w')
+#    for row in results:
+#        outputfile.write("%s\n" % str(row))
+#    outputfile.close()
 
     cursor.close()
     connection.close()
@@ -32,12 +44,13 @@ def retrieve_data(chr, pos, alt):
     return results
 
 
+# api function can be called from URL and initiate the chr, pos and alt parameters/variable.
 @app.route('/api', methods=['GET'])
 def api():
     chr = request.args.get('chr')
     pos = request.args.get('pos')
     alt = request.args.get('alt')
-    results = retrieve_data(chr, pos, alt)
+    results = retrieve_malignant_data(chr, pos, alt)
     
     return str(results)
 
