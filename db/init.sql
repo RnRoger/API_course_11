@@ -1,7 +1,7 @@
 create database vcfData;
 use vcfData;
 
-CREATE TABLE malignant_data(
+CREATE TABLE vcfData.malignant_data(
 	chrom	VARCHAR(5),
 	pos	INTEGER,
 	id	VARCHAR(35),
@@ -12,7 +12,7 @@ CREATE TABLE malignant_data(
 	freq	FLOAT(50)
 	);
 	
-CREATE TABLE benign_data(
+CREATE TABLE vcfData.benign_data(
 	chrom	VARCHAR(5),
 	pos	INTEGER,
 	id	VARCHAR(25),
@@ -21,7 +21,7 @@ CREATE TABLE benign_data(
 	);
 
 
-INSERT INTO benign_data
+INSERT INTO vcfData.benign_data
 	(chrom, pos, id, alt, ref)
 VALUES
 	('20',68396, 'rs138777928','C','T'),
@@ -58,7 +58,7 @@ VALUES
 	('20',76640, 'rs376536497','C','G'),
 	('20',76640, 'rs376536497','C','T');
 
-INSERT INTO malignant_data 
+INSERT INTO vcfData.malignant_data 
 	(chrom, pos, id, ref, alt, qual, filter, freq)
 VALUES
 	('20',68303, 'rs112879285','A','G',60085.42,'PASS',2.03468e-04),
