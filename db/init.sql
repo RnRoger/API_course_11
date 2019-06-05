@@ -16,8 +16,8 @@ CREATE TABLE benign_data(
 	chrom	VARCHAR(5),
 	pos	INTEGER,
 	id	VARCHAR(25),
-	alt	VARCHAR(30),
-	REF	VARCHAR(30)
+	REF	VARCHAR(30),
+	alt	VARCHAR(30)
 	);
 
 
