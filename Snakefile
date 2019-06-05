@@ -14,7 +14,7 @@ with open('variant_data.txt') as f:
     if first_line != "Not Malignant" or "Unknown":
         rule fake:
             params:
-                chr = os.environ.get("chr")
+                chr = os.environ.get("chr"),
                 pos = os.environ.get("pos"),
                 alt = os.environ.get("alt")
             output:
