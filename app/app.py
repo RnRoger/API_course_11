@@ -51,6 +51,7 @@ def api():
         return(str(results).strip("()"))
     else:
         return("Not Malignant")
+    return("Unknown")
 
 
     
