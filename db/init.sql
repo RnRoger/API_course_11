@@ -22,7 +22,7 @@ CREATE TABLE benign_data(
 
 
 INSERT INTO benign_data(
-	(chrom, pos, id, alt)
+	(chrom, pos, id, alt, ref)
 VALUES
 	('20',68396, 'rs138777928','C','T'),
 	('20',68397, 'rs748102612','G','A'),
