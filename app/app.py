@@ -18,7 +18,7 @@ app = Flask(__name__)
 
 # Retrieves data from local database based on given parameters chr, pos and alt. Which represents chromosome, position and
 # alternative allele
-def retrieve_malignant_data(chr, pos, alt):
+def retrieve_data(chr, pos, alt):
     config = {
         'user': 'root',
         'password': 'root',
@@ -46,7 +46,7 @@ def api():
     chr = request.args.get('chr')
     pos = request.args.get('pos')
     alt = request.args.get('alt')
-    results = retrieve_malignant_data(chr, pos, alt)
+    results = retrieve_data(chr, pos, alt)
     if results != None:
         return(str(results).strip("()"))
     else:
