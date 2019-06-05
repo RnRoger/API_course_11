@@ -67,11 +67,11 @@ def api():
     chr = request.args.get('chr')
     pos = request.args.get('pos')
     alt = request.args.get('alt')
-    results = retrieve_benign_data(chr, pos, alt)
+    results = retrieve_malignant_data(chr, pos, alt)
     if results != None:
         return(str(results).strip("()"))
-    elif results == None:
-        results = retrieve_malignant_data(chr, pos, alt)
+    else:
+        results = retrieve_benign_data(chr, pos, alt)
         if results != None:
             return("Benign")
         else:
