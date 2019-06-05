@@ -47,7 +47,7 @@ def api():
     pos = request.args.get('pos')
     alt = request.args.get('alt')
     results = retrieve_data(chr, pos, alt)
-    if results != None:
+    if results != None and results[7] < 0.01:
         return(str(results).strip("()"))
     else:
         return("Not Malignant")
