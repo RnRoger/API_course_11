@@ -16,7 +16,7 @@ import json
 
 app = Flask(__name__)
 
-# Retrieves data from local database based on given parameters chr, pos and alt. Which represents chromosome, position and 
+# Retrieves data from local database based on given parameters chr, pos and alt. Which represents chromosome, position and
 # alternative allele
 def retrieve_malignant_data(chr, pos, alt):
     config = {
@@ -39,6 +39,28 @@ def retrieve_malignant_data(chr, pos, alt):
     return results
 
 
+# Retrieves data from local database based on given parameters chr, pos and alt. Which represents chromosome, position and
+# alternative allele
+def retrieve_benign_data(chr, pos, alt):
+    config = {
+        'user': 'root',
+        'password': 'root',
+        'host': 'db',
+        'port': '3306',
+        'database': 'vcfData'
+    }
+    connection = mysql.connector.connect(**config)
+    cursor = connection.cursor()
+
+    query = 'SELECT * FROM benign_data WHERE chrom=%s AND pos=%s AND alt=%s;'
+    cursor.execute(query, (chr, pos, alt))
+    results = cursor.fetchone()
+
+    cursor.close()
+    connection.close()
+
+    return results
+
 # api function can be called from URL and initiate the chr, pos and alt parameters/variable.
 @app.route('/api', methods=['GET'])
 def api():
@@ -46,8 +68,18 @@ def api():
     pos = request.args.get('pos')
     alt = request.args.get('alt')
     results = retrieve_malignant_data(chr, pos, alt)
+    if results != None:
+        return(str(results).strip("()"))
+    elif results == None:
+        results = retrieve_benign_data(chr, pos, alt)
+
+    if results != None:
+        return("Benign")
+    else:
+        return("Unknown")
+
     
-    return str(results)
+    #return str(results)
 
 
 if __name__ == '__main__':
