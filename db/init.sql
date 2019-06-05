@@ -5,8 +5,8 @@ CREATE TABLE malignant_data(
 	chrom	VARCHAR(5),
 	pos	INTEGER,
 	id	VARCHAR(25),
-	REF	VARCHAR(5),
-	alt	VARCHAR(5),
+	REF	VARCHAR(20),
+	alt	VARCHAR(20),
 	qual	FLOAT(50),
 	filter	VARCHAR(20),
 	freq	FLOAT(50)
@@ -16,8 +16,8 @@ CREATE TABLE benign_data(
 	chrom	VARCHAR(5),
 	pos	INTEGER,
 	id	VARCHAR(25),
-	alt	VARCHAR(5),
-	REF	VARCHAR(5)
+	alt	VARCHAR(20),
+	REF	VARCHAR(20)
 	);
 
 
