@@ -12,13 +12,13 @@ CREATE TABLE malignant_data(
 	freq	FLOAT(50)
 	);
 	
-
 CREATE TABLE benign_data(
 	chrom	VARCHAR(5),
 	pos	INTEGER,
 	id	VARCHAR(25),
 	alt	VARCHAR(5),
 	);
+
 
 INSERT INTO benign_data(
 	(chrom, pos, id, alt)
