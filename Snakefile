@@ -38,7 +38,7 @@ rule workflow:
 rule report:
 	input:
 		Variant = "variant_info.txt",
-        Ensembl = "ensembl_application.json"
+        Ensembl = "ensembl_application.json",
 		Workflow = "workflow.svg"
 	output:
 		"report.html"
