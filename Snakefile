@@ -1,6 +1,6 @@
 rule all:
     input:
-        "ensembl_application.json"
+        "report.html"
 
 # Call local API to retrieve variant data based on chromosome (chr), position (pos) and alternative allele (alt)
 rule variant_api:
@@ -28,8 +28,20 @@ rule ensembl_api:
             shell("wget -q --header='Content-type:application/json' 'https://rest.ensembl.org/variation/human/{rsID}?genotyping_chips=1'  --output-document {output}")
 
 # Create workflow
-#rule workflow:
-#	output:
-#		"workflow.svg"
-#	shell:
-#		"snakemake --dag all | dot -Tsvg > {output}"
+rule workflow:
+	output:
+		"workflow.svg"
+	shell:
+		"snakemake --dag all | dot -Tsvg > {output}"
+
+
+rule report:
+	input:
+		Variant = "variant_info.txt",
+        Ensembl = "ensembl_application.json"
+		Workflow = "workflow.svg"
+	output:
+		"report.html"
+	run:
+		from snakemake.utils import report
+		report("""API Course 11""", output[0], metadata="Author: Awan & Melanie", **input)
