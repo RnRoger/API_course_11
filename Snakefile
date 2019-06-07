@@ -18,3 +18,8 @@ rule ensembl_api:
             for line in file:
                 rsID = line.split(",")[2] 
         shell("wget -q --header='Content-type:application/json' 'https://rest.ensembl.org/variation/human/{rsID}?genotyping_chips=1'  --output-document {output}")
+
+        
+rule all:
+    input:
+        "ensembl_application.json"
