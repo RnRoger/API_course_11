@@ -16,5 +16,5 @@ rule ensembl_api:
     run:
         with open(input[0]) as file:
             for line in file:
-                rsID = line[2] 
+                rsID = line.split(",")[2] 
         shell("wget -q --header='Content-type:application/json' 'https://rest.ensembl.org/variation/human/{rsID}?genotyping_chips=1'  --output-document {output}")
