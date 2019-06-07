@@ -22,12 +22,14 @@ rule ensembl_api:
     run:
         with open(input[0]) as file:
             line = file.readline()
-            rsID = line.split(",")[2] 
+            rsID = str(line.split(",")[2])
+            rsID = rsID.replace("'", "")
+	    rsID = rsID.replace(" ", "")
         shell("wget -q --header='Content-type:application/json' 'https://rest.ensembl.org/variation/human/{rsID}?genotyping_chips=1'  --output-document {output}")
 
 # Create workflow
-rule workflow:
-	output:
-		"workflow.svg"
-	shell:
-		"snakemake --dag all | dot -Tsvg > {output}"
+#rule workflow:
+#	output:
+#		"workflow.svg"
+#	shell:
+#		"snakemake --dag all | dot -Tsvg > {output}"
