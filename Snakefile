@@ -1,5 +1,3 @@
-snakemake.utils.makedirs(output)
-
 rule all:
     input:
         "report.html"
@@ -11,16 +9,16 @@ rule variant_api:
         pos = os.environ.get("pos"),
         alt = os.environ.get("alt")
     output:
-        "output/variant_info.txt"
+        "variant_info.txt"
     run:
         shell("wget 'http://0.0.0.0:5000/api?chr={params.chr}&pos={params.pos}&alt={params.alt}' --output-document {output}")
 
 # Call ensembl API to retrieve additional information about variant
 rule ensembl_api:
     input:
-        "output/variant_info.txt"
+        "variant_info.txt"
     output:
-        "output/ensembl_application.json"
+        "ensembl_application.json"
     run:
         with open(input[0]) as file:
             line = file.readline()
@@ -32,18 +30,18 @@ rule ensembl_api:
 # Create workflow
 rule workflow:
 	output:
-		"output/workflow.svg"
+		"workflow.svg"
 	shell:
 		"snakemake --dag all | dot -Tsvg > {output}"
 
 # Create HTML report
 rule report:
 	input:
-		Variant = "output/variant_info.txt",
-        Ensembl = "output/ensembl_application.json",
-		Workflow = "output/workflow.svg"
+		Variant Informatie = "variant_info.txt",
+        Ensembl application data = "ensembl_application.json",
+		Workflow visualization = "workflow.svg"
 	output:
-		"output/report.html"
+		"report.html"
 	run:
 		from snakemake.utils import report
-		report("""API Course 11""", output[0], metadata="Author: Awan & Melanie", **input)
+		report("""API Course 11 (version 1.0)""", output[0], metadata="Authors: Awan & Melanie", **input)
