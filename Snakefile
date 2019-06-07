@@ -1,62 +1,20 @@
-<<<<<<< HEAD
-<<<<<<< HEAD
-rule api:
+rule variant_api:
     params:
         chr = os.environ.get("chr"),
         pos = os.environ.get("pos"),
         alt = os.environ.get("alt")
     output:
-        "variant.txt"
+        "variant_info.txt"
     run:
         shell("wget 'http://0.0.0.0:5000/api?chr={params.chr}&pos={params.pos}&alt={params.alt}' --output-document {output}")
 
-=======
-rule api:
-    params:
-        chr = os.environ.get("chr"),
-        pos = os.environ.get("pos"),
-        alt = os.environ.get("alt")
+rule ensembl_api:
+    input:
+        "variant_info.txt"
     output:
-        "variant_data.txt"
+        "ensembl_application.json"
     run:
-        shell("wget 'http://0.0.0.0:5000/api?chr={params.chr}&pos={params.pos}&alt={params.alt}' --output-document {output}")
-
-
-with open('variant_data.txt') as f:
-    first_line = f.readline()
-    if first_line != "Not Malignant" or "Unknown":
-        rule fake:
-            params:
-                chr = os.environ.get("chr")
-                pos = os.environ.get("pos"),
-                alt = os.environ.get("alt")
-            output:
-                "test.txt"
-            run:
-                shell("wget 'http://0.0.0.0:5000/api?chr={params.chr}&pos={params.pos}&alt={params.alt}' --output-document {output}")
->>>>>>> ec85ff5b46e9fce771787880e92d6fe596ae9de0
-=======
-rule api:
-    params:
-        chr = os.environ.get("chr"),
-        pos = os.environ.get("pos"),
-        alt = os.environ.get("alt")
-    output:
-        "variant_data.txt"
-    run:
-        shell("wget 'http://0.0.0.0:5000/api?chr={params.chr}&pos={params.pos}&alt={params.alt}' --output-document {output}")
-
-
-with open('variant_data.txt') as f:
-    first_line = f.readline()
-    if first_line != "Not Malignant" or "Unknown":
-        rule fake:
-            params:
-                chr = os.environ.get("chr"),
-                pos = os.environ.get("pos"),
-                alt = os.environ.get("alt")
-            output:
-                "test.txt"
-            run:
-                shell("wget 'http://0.0.0.0:5000/api?chr={params.chr}&pos={params.pos}&alt={params.alt}' --output-document {output}")
->>>>>>> 65491ec25f5113bd4726d28fcaacf4d6d3118c39
+        with open(input[0]) as file:
+            for line in file:
+                rsID = line[2] 
+        shell("wget -q --header='Content-type:application/json' 'https://rest.ensembl.org/variation/human/{rsID}?genotyping_chips=1'  --output-document {output}")
