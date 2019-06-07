@@ -24,7 +24,7 @@ rule ensembl_api:
             line = file.readline()
             rsID = str(line.split(",")[2])
             rsID = rsID.replace("'", "")
-	    rsID = rsID.replace(" ", "")
+	        rsID = rsID.replace(" ", "")
             shell("wget -q --header='Content-type:application/json' 'https://rest.ensembl.org/variation/human/{rsID}?genotyping_chips=1'  --output-document {output}")
 
 # Create workflow
