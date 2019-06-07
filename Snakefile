@@ -37,9 +37,9 @@ rule workflow:
 # Create HTML report
 rule report:
 	input:
-		Variant Informatie = "variant_info.txt",
-        Ensembl application data = "ensembl_application.json",
-		Workflow visualization = "workflow.svg"
+		VariantInfo = "variant_info.txt",
+        Ensembl = "ensembl_application.json",
+		Workflow = "workflow.svg"
 	output:
 		"report.html"
 	run:
