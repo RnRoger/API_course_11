@@ -23,11 +23,10 @@ rule ensembl_api:
         with open(input[0]) as file:
             line = file.readline()
             print(line)
-            if line != "Not Malignant" or line != "Unknown":
-                rsID = str(line.split(",")[2])
-                rsID = rsID.replace("'", "")
-	            rsID = rsID.replace(" ", "")
-                shell("wget -q --header='Content-type:application/json' 'https://rest.ensembl.org/variation/human/{rsID}?genotyping_chips=1'  --output-document {output}")
+            rsID = str(line.split(",")[2])
+            rsID = rsID.replace("'", "")
+	        rsID = rsID.replace(" ", "")
+            shell("wget -q --header='Content-type:application/json' 'https://rest.ensembl.org/variation/human/{rsID}?genotyping_chips=1'  --output-document {output}")
 
 # Create workflow
 rule workflow:
