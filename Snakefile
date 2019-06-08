@@ -23,7 +23,7 @@ rule ensembl_api:
         try:
             with open(input[0]) as file:
                 line = file.readline()
-                print(line + "variant")
+                print(line + " variant")
                 rsID = str(line.split(",")[2])
                 print("Malignant variant")
                 rsID = rsID.replace("'", "")
