@@ -42,8 +42,11 @@ The five files which are created in case of malignant variant:
 3. Call snakemake:	chr=20 pos=68303 alt=G snakemake
 
 **chr**	= chromosome number of choice
+
 **pos**	= position of choice
+
 **alt**	= alternative allele of choice
+
 
 
 ## Versioning
