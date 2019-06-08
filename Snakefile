@@ -23,14 +23,14 @@ rule ensembl_api:
         try:
             with open(input[0]) as file:
                 line = file.readline()
-                print(line + " variant")
+                print(line + " variant\n")
                 rsID = str(line.split(",")[2])
                 print("Malignant variant")
                 rsID = rsID.replace("'", "")
 	        rsID = rsID.replace(" ", "")
                 shell("wget -q --header='Content-type:application/json' 'https://rest.ensembl.org/variation/human/{rsID}?genotyping_chips=1'  --output-document {output} || true")
         except(IndexError):
-            print("An error occurred, this is due to a Unknown or Not Malignant variant.\nPlease try again with a Malignant variant!")
+            print("An error occurred, this is due to a Unknown or Not Malignant variant.\nPlease try again with a Malignant variant! (see which one above)")
         except:
             print("An error occurred, unfortunatly this isn't due to a Unknown of Not Malignant variant.\nPlease try again or contact the developer!")
             
