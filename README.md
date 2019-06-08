@@ -28,24 +28,24 @@ In the end we've created five files:
 * report.html
 	
 
-# Dependencies
+## Dependencies
 
 * snakemake
 * docker
 
 
-# Versioning
+## Versioning
 
 * Version 1.0 - 12-06-2019
 
   
-# Authors
+## Authors
 
 * **Awan Al Koerdi** 
 * **Melanie Opperman** 
 
 
-# Acknowledgement
+## Acknowledgement
 
 We would like to acknowledge Rogier Stegeman and Johannes Köster for their help with our project. 
 
