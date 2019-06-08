@@ -1,3 +1,7 @@
+from pytools.persistent_dict import PersistentDict
+
+storage = PersistentDict("mystorage")
+
 rule all:
     input:
         "report.html"
