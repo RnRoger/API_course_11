@@ -31,12 +31,23 @@ rule ensembl_api:
                 rsID = rsID.replace("'", "")
 	        rsID = rsID.replace(" ", "")
                 shell("wget -q --header='Content-type:application/json' 'https://rest.ensembl.org/variation/human/{rsID}?genotyping_chips=1'  --output-document {output} || true")
+                storage.store("rsID", rsID)
         except(IndexError):
             print("An error occurred, this is due to a Unknown or Not Malignant variant (see which one above).\nPlease try again with a Malignant variant!\n")
             shell("rm variant_info.txt")
         except:
             print("An error occurred, unfortunatly this isn't due to a Unknown of Not Malignant variant.\nPlease try again or contact the developer!\n")
             shell("rm variant_info.txt")
+
+
+# Call NCBI SNP API to retrieve additional information about variant
+rule SNP_api:
+    output:
+        "SNP_info.json"
+    run:
+        rsID = storage.fetch("rsID")
+        rsShort = rsID.replace("rs", "")
+        shell("wget 'https://api.ncbi.nlm.nih.gov/variation/v0/beta/refsnp/{rsShort}' --output-document {output} || true")
 
 
 # Create workflow
