@@ -40,9 +40,9 @@ The five files which are created in case of malignant variant:
 1. Clone directory:	git clone https://github.com/Mellieee/API_course_11.git
 2. Start docker:	docker-compose up --build -d
 3. Call snakemake:	chr=20 pos=68303 alt=G snakemake
-* chr 	= chromosome number of choice
-* pos	= position of choice
-* alt	= alternative allele of choice
+** chr 	= chromosome number of choice
+** pos	= position of choice
+** alt	= alternative allele of choice
 
 
 ## Versioning
