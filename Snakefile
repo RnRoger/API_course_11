@@ -20,13 +20,19 @@ rule ensembl_api:
     output:
         "ensembl_application.json"
     run:
-        with open(input[0]) as file:
-            line = file.readline()
-            print(line)
-            rsID = str(line.split(",")[2])
-            rsID = rsID.replace("'", "")
-	    rsID = rsID.replace(" ", "")
-            shell("wget -q --header='Content-type:application/json' 'https://rest.ensembl.org/variation/human/{rsID}?genotyping_chips=1'  --output-document {output} || true")
+        try:
+            with open(input[0]) as file:
+                line = file.readline()
+                print(line)
+                rsID = str(line.split(",")[2])
+                rsID = rsID.replace("'", "")
+	        rsID = rsID.replace(" ", "")
+                shell("wget -q --header='Content-type:application/json' 'https://rest.ensembl.org/variation/human/{rsID}?genotyping_chips=1'  --output-document {output} || true")
+        except(IndexError):
+            print("An error occurred, this is due to a Unknown or Not Malignant variant.\nPlease try again!")
+        except:
+            print("An error occurred, unfortunatly this isn't due to a Unknown of Not Malignant variant.\nPlease try again or contact the developer!")
+            
 
 
 # Create workflow
