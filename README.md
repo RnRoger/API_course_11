@@ -4,7 +4,7 @@ Variants with a frequency (MAF) lower than 0.01 are considered to be malignant. 
 
 ## Input 
 
-For variant information we used exome data from gnomad [1]. We didn't store all the information due to lack of storage space.
+For variant information we used exome data from gnomad. We didn't store all the information due to lack of storage space.
 
 Below you see which data we stored and some examples:
 
