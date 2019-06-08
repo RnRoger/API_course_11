@@ -10,10 +10,10 @@ Below you see which data we stored and some examples:
 
 
 ```
-chrom	pos	id	ref	alt	qual	filter	freq
+chrom	 pos	    id		ref	alt	  qual		filter	  freq
 20	68303	rs112879285	A	G	60085.42	PASS	2.03468e-04
 20	68303	rs112879285	A	T	60085.42	PASS	1.19687e-05
-20	68311	rs753351060	G	A	1531.28	PASS	3.98476e-06
+20	68311	rs753351060	G	A	1531.28		PASS	3.98476e-06
 
 ```
 
