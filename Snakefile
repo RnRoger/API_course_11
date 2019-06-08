@@ -52,7 +52,7 @@ rule report:
 		"report.html"
 	run:
 		from snakemake.utils import report
-		report("""API Course 11 (version 1.0)""", output[0], metadata="Authors: Awan & Melanie", **input)
+		report("""API Course 11 version 1.0 (proof of concept)""", output[0], metadata="Authors: Awan & Melanie", **input)
 
 
 onsuccess:
