@@ -59,4 +59,4 @@ onsuccess:
     print("Workflow finished without errors!")
 
 onerror:
-    print("Snakemake stopped!")
+    print("\nSnakemake stopped!")
