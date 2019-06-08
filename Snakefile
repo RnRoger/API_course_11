@@ -38,10 +38,10 @@ rule ensembl_api:
                 storage.store("rsID", rsID)
         except(IndexError):
             print("An error occurred, this is due to a Unknown or Not Malignant variant (see which one above).\nPlease try again with a Malignant variant!\n")
-            shell("rm variant_info.txt")
+            #shell("rm variant_info.txt")
         except:
             print("An error occurred, unfortunatly this isn't due to a Unknown of Not Malignant variant.\nPlease try again or contact the developer!\n")
-            shell("rm variant_info.txt")
+            #shell("rm variant_info.txt")
 
 
 # Call NCBI SNP API to retrieve additional information about variant
