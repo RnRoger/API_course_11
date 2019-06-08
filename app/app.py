@@ -50,9 +50,9 @@ def api():
     if results != None and results[7] < 0.01:
         return(str(results).strip("()"))
     elif results != None and results[7] > 0.01:
-        return("Not Malignant")
+        return("Not Malignant ," + pos + ", rs")
     else:
-        return("Unknown")
+        return("Unknown," + pos + ", rs")
     
 
 
