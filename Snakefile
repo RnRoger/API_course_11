@@ -31,16 +31,10 @@ rule ensembl_api:
                 rsID = str(line.split(",")[2])
                 print("Malignant variant\n")
                 rsID = rsID.replace("'", "")
-	        rsID = rsID.replace(" ", "")
-<<<<<<< HEAD
-                rsShort = rsID.replace("rs", "")
-                shell("wget -q --header='Content-type:application/json' 'https://rest.ensembl.org/variation/human/{rsID}?genotyping_chips=1'  --output-document {output[0]} || true")
-                shell("wget 'https://api.ncbi.nlm.nih.gov/variation/v0/beta/refsnp/{rsShort}'  --output-document {output[1]} || true")
-=======
+	    rsID = rsID.replace(" ", "")
 		rsShort = rsID.replace("rs", "")
-                shell("wget -q --header='Content-type:application/json' 'https://rest.ensembl.org/variation/human/{rsID}?genotyping_chips=1'  --output-document {output.ensembl_application.json} || true")
+                shell("wget -q --header='Content-type:application/json' 'https://rest.ensembl.org/variation/human/{rsID}?genotyping_chips=1'  --output-document {output[0]} || true")
                 shell("wget 'https://api.ncbi.nlm.nih.gov/variation/v0/beta/refsnp/{rsShort}'  --output-document {output.SNP_info.json} || true")
->>>>>>> 111706732c04c2908267ee23ef93edf308ea7122
         except(IndexError):
             print("An error occurred, this is due to a Unknown or Not Malignant variant (see which one above).\nPlease try again with a Malignant variant!\n")
             shell("rm variant_info.txt")
