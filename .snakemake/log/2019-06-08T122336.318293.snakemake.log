@@ -1,0 +1,27 @@
+Building DAG of jobs...
+Provided cores: 1
+Rules claiming more threads will be scaled down.
+Job counts:
+	count	jobs
+	1	all
+	1	ensembl_api
+	1	report
+	1	variant_api
+	1	workflow
+	5
+
+rule variant_api:
+    output: variant_info.txt
+    jobid: 2
+
+Finished job 2.
+1 of 5 steps (20%) done
+
+rule ensembl_api:
+    input: variant_info.txt
+    output: ensembl_application.json
+    jobid: 3
+
+Will exit after finishing currently running jobs.
+Exiting because a job execution failed. Look above for error message
+Complete log: .snakemake/log/2019-06-08T122336.318293.snakemake.log
