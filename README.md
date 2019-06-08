@@ -19,8 +19,9 @@ chrom	 pos	    id		ref	alt	  qual		filter	  freq
 
 ## Output
 
-At the end of the snakemake workflow a html report is created. In this report all files with additional info about the variant are being displayed. 
-In the end we've created five files:
+At the end of the snakemake workflow a html report is created if the variant is considered malignant. In this report all files with additional info about the variant are being displayed. If the variant is not considered malignant or unknown snakemake wil not create these files.
+
+The five files which are created in case of malignant variant:
 * variant_info.txt	
 * ensembl_application.json
 * SNP_info.json
@@ -32,6 +33,16 @@ In the end we've created five files:
 
 * snakemake
 * docker
+
+
+## How to run?
+
+1. Clone directory:	git clone https://github.com/Mellieee/API_course_11.git
+2. Start docker:	docker-compose up --build -d
+3. Call snakemake:	chr=20 pos=68303 alt=G snakemake
+* chr 	= chromosome number of choice
+* pos	= position of choice
+* alt	= alternative allele of choice
 
 
 ## Versioning
