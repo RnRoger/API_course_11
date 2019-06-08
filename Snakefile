@@ -63,8 +63,8 @@ rule report:
 	input:
 		VariantInfo = "variant_info.txt",
         Ensembl = "ensembl_application.json",
-        SNP = "SNP_info.json"
-		Workflow = "workflow.svg"
+        SNP = "SNP_info.json",
+	    Workflow = "workflow.svg"
 	output:
 		"report.html"
 	run:
