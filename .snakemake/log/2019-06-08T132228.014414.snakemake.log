@@ -1,0 +1,10 @@
+Error in rule ensembl_api:
+    jobid: 0
+    output: ensembl_application.json
+
+RuleException:
+IndexError in line 26 of /home/minor-g2/Documents/Awan_Mel/API_course_11/Snakefile:
+list index out of range
+  File "/home/minor-g2/Documents/Awan_Mel/API_course_11/Snakefile", line 26, in __rule_ensembl_api
+  File "/usr/lib/python3.6/concurrent/futures/thread.py", line 56, in run
+Exiting because a job execution failed. Look above for error message

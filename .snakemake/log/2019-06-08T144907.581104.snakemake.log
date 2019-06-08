@@ -1,0 +1,4 @@
+Exiting because a job execution failed. Look above for error message
+NameError in line 64 of /home/minor-g2/Documents/Awan_Mel/API_course_11/Snakefile:
+name 'line' is not defined
+  File "/home/minor-g2/Documents/Awan_Mel/API_course_11/Snakefile", line 64, in __onerror

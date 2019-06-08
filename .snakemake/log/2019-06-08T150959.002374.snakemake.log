@@ -1,0 +1,1 @@
+snakemake --dag all | dot -Tsvg > workflow.svg

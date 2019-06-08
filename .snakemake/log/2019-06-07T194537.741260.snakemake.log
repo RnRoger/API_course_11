@@ -1,0 +1,10 @@
+Error in rule variant_api:
+    jobid: 0
+    output: variant_info.txt
+
+RuleException:
+CalledProcessError in line 14 of /home/minor-g2/Documents/Awan_Mel/API_course_11/Snakefile:
+Command ' set -euo pipefail;  wget 'http://0.0.0.0:5000/api?chr=20&pos=68303&alt=G' --output-document variant_info.txt ' returned non-zero exit status 4.
+  File "/home/minor-g2/Documents/Awan_Mel/API_course_11/Snakefile", line 14, in __rule_variant_api
+  File "/usr/lib/python3.6/concurrent/futures/thread.py", line 56, in run
+Exiting because a job execution failed. Look above for error message

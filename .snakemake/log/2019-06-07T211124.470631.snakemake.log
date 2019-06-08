@@ -1,0 +1,48 @@
+Building DAG of jobs...
+Provided cores: 1
+Rules claiming more threads will be scaled down.
+Job counts:
+	count	jobs
+	1	all
+	1	ensembl_api
+	1	report
+	1	variant_api
+	1	workflow
+	5
+
+rule variant_api:
+    output: variant_info.txt
+    jobid: 3
+
+Finished job 3.
+1 of 5 steps (20%) done
+
+rule ensembl_api:
+    input: variant_info.txt
+    output: ensembl_application.json
+    jobid: 4
+
+Finished job 4.
+2 of 5 steps (40%) done
+
+rule workflow:
+    output: workflow.svg
+    jobid: 2
+
+Finished job 2.
+3 of 5 steps (60%) done
+
+rule report:
+    input: variant_info.txt, ensembl_application.json, workflow.svg
+    output: report.html
+    jobid: 1
+
+Finished job 1.
+4 of 5 steps (80%) done
+
+localrule all:
+    input: report.html
+    jobid: 0
+
+Finished job 0.
+5 of 5 steps (100%) done

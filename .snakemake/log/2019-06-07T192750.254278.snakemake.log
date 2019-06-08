@@ -1,0 +1,3 @@
+NameError in line 1 of /home/minor-g2/Documents/Awan_Mel/API_course_11/Snakefile:
+name 'output' is not defined
+  File "/home/minor-g2/Documents/Awan_Mel/API_course_11/Snakefile", line 1, in <module>
