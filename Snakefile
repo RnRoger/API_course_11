@@ -32,7 +32,7 @@ rule ensembl_api:
                 print("Malignant variant\n")
                 rsID = rsID.replace("'", "")
 	        rsID = rsID.replace(" ", "")
-            rsShort = rsID.replace("rs", "")
+                rsShort = rsID.replace("rs", "")
                 shell("wget -q --header='Content-type:application/json' 'https://rest.ensembl.org/variation/human/{rsID}?genotyping_chips=1'  --output-document {output[0]} || true")
                 shell("wget 'https://api.ncbi.nlm.nih.gov/variation/v0/beta/refsnp/{rsShort}'  --output-document {output[1]} || true")
         except(IndexError):
