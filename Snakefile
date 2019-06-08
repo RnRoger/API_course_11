@@ -27,6 +27,10 @@ rule ensembl_api:
             rsID = rsID.replace("'", "")
 	    rsID = rsID.replace(" ", "")
             shell("wget -q --header='Content-type:application/json' 'https://rest.ensembl.org/variation/human/{rsID}?genotyping_chips=1'  --output-document {output}")
+    onerror:
+        print("Snakemake stopped, this could be due to a Non Malignant or Unknown variant")
+        print("Variant = " + str(line))
+
 
 # Create workflow
 rule workflow:
