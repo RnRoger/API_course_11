@@ -20,11 +20,12 @@ chrom	 pos	    id		ref	alt	  qual		filter	  freq
 ## Output
 
 At the end of the snakemake workflow a html report is created. In this report all files with additional info about the variant are being displayed. 
-In the end we've created four files:
+In the end we've created five files:
 	- variant_info.txt	
 	- ensembl_application.json
 	- SNP_info.json
 	- workflow.svg
+	- report.html
 	
 
 # Dependencies
