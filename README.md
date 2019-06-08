@@ -41,7 +41,7 @@ The five files which are created in case of malignant variant:
 2. Start docker:	docker-compose up --build -d
 3. Call snakemake:	chr=20 pos=68303 alt=G snakemake
 
-**chr**	= chromosome number of choice
+**chr**	= chromosome number of choice *At this point only chromosome 20 is available in database
 
 **pos**	= position of choice
 
