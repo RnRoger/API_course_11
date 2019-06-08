@@ -33,7 +33,7 @@ rule ensembl_api:
             print("An error occurred, this is due to a Unknown or Not Malignant variant (see which one above).\nPlease try again with a Malignant variant!\n")
         except:
             print("An error occurred, unfortunatly this isn't due to a Unknown of Not Malignant variant.\nPlease try again or contact the developer!\n")
-            
+            shell("rm variant_info.txt")
 
 # Create workflow
 rule workflow:
