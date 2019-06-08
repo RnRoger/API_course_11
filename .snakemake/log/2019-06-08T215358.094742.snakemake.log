@@ -1,0 +1,10 @@
+Error in rule SNP_api:
+    jobid: 0
+    output: SNP_info.json
+
+RuleException:
+NameError in line 48 of /home/minor-g2/Documents/Awan_Mel/API_course_11/Snakefile:
+name 'storage' is not defined
+  File "/home/minor-g2/Documents/Awan_Mel/API_course_11/Snakefile", line 48, in __rule_SNP_api
+  File "/usr/lib/python3.6/concurrent/futures/thread.py", line 56, in run
+Exiting because a job execution failed. Look above for error message
