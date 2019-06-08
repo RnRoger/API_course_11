@@ -2,11 +2,12 @@
 # Authors:  Awan Al Koerdi & Melanie Opperman                                                                           #
 # Version:  1.0                                                                                                         #
 # Date:     20-05-2019                                                                                                  #
-# Finished: 06-06-2019                                                                                                  #
+# Finished: 08-06-2019                                                                                                  #
 #                                                                                                                       #
-# Function: Parameters chr, pos and alt can be passed through a URL. When variant is present in database, additional    #
-#           information is retrieved.                                                                                   #
-##########################################################################################################################
+# Function: Parameters chr, pos and alt can be passed through a URL. When variant is present in database and considered #
+#           malignant, additional information is retrieved and passed through. In case of a Non Malignant or Unknown    #
+#           variant only a string is passed through ("Not Malignant" or "Unknown")                                      #
+#########################################################################################################################
 
 # required imports
 from typing import List, Dict
@@ -40,7 +41,9 @@ def retrieve_data(chr, pos, alt):
 
 
 
-# api function can be called from URL and initializes the chr, pos and alt parameters.
+# Api function can be called from URL and initializes the chr, pos and alt parameters.
+# Determination of malignancy, benign or unknown variant is done after data is retrieved
+# from database. Variants with MAF < 0.01 are considered malignant.
 @app.route('/api', methods=['GET'])
 def api():
     chr = request.args.get('chr')
