@@ -22,7 +22,7 @@ rule ensembl_api:
         "variant_info.txt"
     output:
         "ensembl_application.json"
-    "SNP_info.json"
+        "SNP_info.json"
     run:
         try:
             with open(input[0]) as file:
@@ -56,7 +56,7 @@ rule workflow:
 # Create HTML report
 rule report:
 	input:
-		#VariantInfo = "variant_info.txt",
+		VariantInfo = "variant_info.txt",
         Ensembl = "ensembl_application.json",
 	Workflow = "workflow.svg"
 	output:
