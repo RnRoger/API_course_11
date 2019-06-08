@@ -22,7 +22,7 @@ rule ensembl_api:
     run:
         with open(input[0]) as file:
             line = file.readline()
-            print(line)
+            print(str(line.split(",")[0]))
             rsID = str(line.split(",")[2])
             rsID = rsID.replace("'", "")
 	    rsID = rsID.replace(" ", "")
