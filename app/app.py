@@ -40,7 +40,7 @@ def retrieve_data(chr, pos, alt):
 
 
 
-# api function can be called from URL and initiate the chr, pos and alt parameters/variable.
+# api function can be called from URL and initializes the chr, pos and alt parameters.
 @app.route('/api', methods=['GET'])
 def api():
     chr = request.args.get('chr')
@@ -55,9 +55,6 @@ def api():
         return("Unknown")
     
 
-
-    
-    #return str(results)
 
 
 if __name__ == '__main__':
