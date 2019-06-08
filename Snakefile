@@ -31,6 +31,7 @@ rule ensembl_api:
                 shell("wget -q --header='Content-type:application/json' 'https://rest.ensembl.org/variation/human/{rsID}?genotyping_chips=1'  --output-document {output} || true")
         except(IndexError):
             print("An error occurred, this is due to a Unknown or Not Malignant variant (see which one above).\nPlease try again with a Malignant variant!\n")
+            shell("rm variant_info.txt")
         except:
             print("An error occurred, unfortunatly this isn't due to a Unknown of Not Malignant variant.\nPlease try again or contact the developer!\n")
             shell("rm variant_info.txt")
