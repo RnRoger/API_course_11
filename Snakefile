@@ -30,11 +30,10 @@ rule ensembl_api:
 	        rsID = rsID.replace(" ", "")
                 shell("wget -q --header='Content-type:application/json' 'https://rest.ensembl.org/variation/human/{rsID}?genotyping_chips=1'  --output-document {output} || true")
         except(IndexError):
-            print("An error occurred, this is due to a Unknown or Not Malignant variant.\nPlease try again with a Malignant variant! (see which one above)")
+            print("An error occurred, this is due to a Unknown or Not Malignant variant (see which one above).\nPlease try again with a Malignant variant!\n")
         except:
-            print("An error occurred, unfortunatly this isn't due to a Unknown of Not Malignant variant.\nPlease try again or contact the developer!")
+            print("An error occurred, unfortunatly this isn't due to a Unknown of Not Malignant variant.\nPlease try again or contact the developer!\n")
             
-
 
 # Create workflow
 rule workflow:
