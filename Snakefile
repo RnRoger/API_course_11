@@ -2,7 +2,6 @@ rule all:
     input:
         "report.html"
 
-
 # Call local API to retrieve variant data based on chromosome (chr), position (pos) and alternative allele (alt)
 rule variant_api:
     params:
@@ -14,7 +13,6 @@ rule variant_api:
     run:
         shell("wget 'http://0.0.0.0:5000/api?chr={params.chr}&pos={params.pos}&alt={params.alt}' --output-document {output}")
 
-
 # Call ensembl API to retrieve additional information about variant
 rule ensembl_api:
     input:
@@ -24,12 +22,11 @@ rule ensembl_api:
     run:
         with open(input[0]) as file:
             line = file.readline()
-            print(line)
+            print(str(line.split(",")[0]))
             rsID = str(line.split(",")[2])
             rsID = rsID.replace("'", "")
 	    rsID = rsID.replace(" ", "")
             shell("wget -q --header='Content-type:application/json' 'https://rest.ensembl.org/variation/human/{rsID}?genotyping_chips=1'  --output-document {output}")
-
 
 # Create workflow
 rule workflow:
@@ -37,7 +34,6 @@ rule workflow:
 		"workflow.svg"
 	shell:
 		"snakemake --dag all | dot -Tsvg > {output}"
-
 
 # Create HTML report
 rule report:
