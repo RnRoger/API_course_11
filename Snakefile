@@ -8,15 +8,15 @@ rule all:
 
 
 # Call local API to retrieve variant data based on chromosome (chr), position (pos) and alternative allele (alt)
-rule variant_api:
-    params:
-        chr = os.environ.get("chr"),
-        pos = os.environ.get("pos"),
-        alt = os.environ.get("alt")
-    output:
-        "variant_info.txt"
-    run:
-        shell("wget 'http://0.0.0.0:5000/api?chr={params.chr}&pos={params.pos}&alt={params.alt}' --output-document {output} || true")
+# rule variant_api:
+#     params:
+#         chr = os.environ.get("chr"),
+#         pos = os.environ.get("pos"),
+#         alt = os.environ.get("alt")
+#     output:
+#         "variant_info.txt"
+#     run:
+#         shell("wget 'http://0.0.0.0:5000/api?chr={params.chr}&pos={params.pos}&alt={params.alt}' --output-document {output} || true")
 
 
 # Call ensembl API to retrieve additional information about variant
