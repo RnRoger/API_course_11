@@ -49,7 +49,7 @@ rule report:
 		report("""API Course 11 (version 1.0)""", output[0], metadata="Authors: Awan & Melanie", **input)
 
 
-onsucces:
+onsuccess:
     print("Workflow finished without errors!")
 
 onerror:
