@@ -25,7 +25,7 @@ rule ensembl_api:
                 line = file.readline()
                 print(line + " variant\n")
                 rsID = str(line.split(",")[2])
-                print("Malignant variant")
+                print("Malignant variant\n")
                 rsID = rsID.replace("'", "")
 	        rsID = rsID.replace(" ", "")
                 shell("wget -q --header='Content-type:application/json' 'https://rest.ensembl.org/variation/human/{rsID}?genotyping_chips=1'  --output-document {output} || true")
@@ -57,7 +57,7 @@ rule report:
 
 
 onsuccess:
-    print("Workflow finished without errors!")
+    print("\nWorkflow finished without errors!")
 
 onerror:
     print("\nSnakemake stopped!")
