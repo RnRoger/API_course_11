@@ -56,7 +56,7 @@ rule workflow:
 # Create HTML report
 rule report:
 	input:
-		VariantInfo = "variant_info.txt",
+		#VariantInfo = "variant_info.txt",
         Ensembl = "ensembl_application.json",
 	Workflow = "workflow.svg"
 	output:
