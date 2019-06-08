@@ -11,7 +11,7 @@ rule variant_api:
     output:
         "variant_info.txt"
     run:
-        shell("wget 'http://0.0.0.0:5000/api?chr={params.chr}&pos={params.pos}&alt={params.alt}' --output-document {output}")
+        shell("wget 'http://0.0.0.0:5000/api?chr={params.chr}&pos={params.pos}&alt={params.alt}' --output-document {output} || true")
 
 # Call ensembl API to retrieve additional information about variant
 rule ensembl_api:
@@ -26,7 +26,7 @@ rule ensembl_api:
             rsID = str(line.split(",")[2])
             rsID = rsID.replace("'", "")
 	    rsID = rsID.replace(" ", "")
-            shell("wget -q --header='Content-type:application/json' 'https://rest.ensembl.org/variation/human/{rsID}?genotyping_chips=1'  --output-document {output}")
+            shell("wget -q --header='Content-type:application/json' 'https://rest.ensembl.org/variation/human/{rsID}?genotyping_chips=1'  --output-document {output} || true")
 
 
 # Create workflow
